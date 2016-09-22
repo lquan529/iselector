@@ -1,0 +1,109 @@
+@charset "utf-8";
+@import "compass/reset";
+
+a{
+	text-decoration: none;
+}
+
+.clearfix,
+%clearfix {
+    *zoom: 1;
+    &:after {
+        content: " ";
+        display: table;
+        height: 0;
+        clear: both;
+    }
+}
+
+.none,
+.hide {
+	display: none;
+}
+
+
+h2 {
+	font-size: 26px;
+	margin-top: 10px;
+	margin-left: 10%;
+}
+
+.selector-inner {
+	margin: 10%;
+	margin-right: 0;
+	@extend %clearfix;
+	.selector-item {
+		width: 200px;
+		position: relative;
+		float: left;
+		margin-right: 20px;
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+	.selector-name {
+		background: #fff url(http://img.yi114.com/20158179585_5_page5_input_down.png) no-repeat 95% center;
+		border: 1px solid #ccc;
+		color: #666;
+		display: block;
+		width: 90%;
+		padding: 0 5%;
+		height: 30px;
+		line-height: 30px;
+		&.selector-dcolor {
+			color: #999;
+		}
+	}
+	.selector-list {
+		border: 1px solid #000;
+		background: #fff;
+		width: 100%;
+		max-height: 160px;
+		overflow-x: hidden;
+		overflow-y: auto;
+		position: absolute;
+		top: 31px;
+		left: 0;
+		z-index: 100;
+		li {
+			border-top: 1px solid #ccc;
+			color: #666;
+			cursor: pointer;
+			width: 90%;
+			padding: 0 5%;
+			height: 30px;
+			line-height: 30px;
+			&:first-child {
+				border-top: none;
+			}
+			&:hover {
+				background: #e5e5e5;
+			}
+			&.forbid{
+				background: #dcdcdc;
+				color: #333;
+				cursor: default;
+			}
+			&.checked, &.checked:hover {
+				background: #3A8EAF;
+				color: #fff;
+			}
+		}
+	}
+	.selector-control {
+		background: #fff url(http://img.yi114.com/20158179585_5_page5_input_down.png) no-repeat 95% center;
+		border: 1px solid #ccc;
+		border-radius: 0px;
+		color: #666;
+		width: 150px;
+		line-height: 30px;
+		padding: 0 5px;
+		margin-right: 20px;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		outline: none;
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+}
