@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="css/iselector.css">
+</head>
+<body>
+	<input type="hidden" role="code" value="">
+
+	<h2>模拟下拉-城市</h2>
+	<div class="selector-inner city-selector">
+		<div class="selector-item">
+			<a href="javascript:;" role="name-1" class="selector-name selector-dcolor">请选择省份</a>
+			<input type="hidden" name="userProvinceId" role="input-1" value="">
+			<ul role="list" class="selector-list hide"></ul><!-- end .selector-list -->
+		</div><!-- end .selector-item -->
+		<div class="selector-item">
+			<a href="javascript:;" role="name-2" class="selector-name selector-dcolor">请选择市</a>
+			<input type="hidden" name="userCityId" role="input-2" value="">
+			<ul role="list" class="selector-list hide"></ul><!-- end .selector-list -->
+		</div><!-- end .selector-item -->
+		<div class="selector-item">
+			<a href="javascript:;" role="name-3" class="selector-name selector-dcolor">请选择区</a>
+			<input type="hidden" name="userProvinceId" role="input-3" value="">
+			<ul role="list" class="selector-list hide"></ul><!-- end .selector-list -->
+		</div><!-- end .selector-item -->
+	</div><!-- end .selector-inner -->
+
+	<h2>模拟下拉-城市-不传json数据，html数据</h2>
+	<div class="selector-inner city-selector-2">
+		<div class="selector-item">
+			<a href="javascript:;" role="name-1" class="selector-name selector-dcolor">请选择省份</a>
+			<input type="hidden" name="userProvinceId" role="input-1" value="">
+			<ul role="list" class="selector-list hide">
+				<li class="forbid">全国城市</li>
+				<li data-id="440000">广东省</li>
+			</ul><!-- end .selector-list -->
+		</div><!-- end .selector-item -->
+		<div class="selector-item">
+			<a href="javascript:;" role="name-2" class="selector-name selector-dcolor">请选择市</a>
+			<input type="hidden" name="userCityId" role="input-2" value="">
+			<ul role="list" class="selector-list hide">
+				<li data-id="440100">广州市</li>
+			</ul><!-- end .selector-list -->
+		</div><!-- end .selector-item -->
+		<div class="selector-item">
+			<a href="javascript:;" role="name-3" class="selector-name selector-dcolor">请选择区</a>
+			<input type="hidden" name="userProvinceId" role="input-3" value="">
+			<ul role="list" class="selector-list hide">
+				<li data-id="440106">天河区</li>
+			</ul><!-- end .selector-list -->
+		</div><!-- end .selector-item -->
+	</div><!-- end .selector-inner -->
+
+	<h2>原生select-城市</h2>
+	<div class="selector-inner select-selector">
+		<select name="userProvinceId" role="list">
+			<option>请选择省份</option>
+		</select>
+		<select name="userCityId" role="list">
+			<option>请选择市</option>
+		</select>
+		<select name="userProvinceId" role="list">
+			<option>请选择区</option>
+		</select>
+	</div><!-- end .selector-inner -->
+
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/citydata.js"></script>
+	<script type="text/javascript" src="js/iselector-2.0.0.js"></script>
+	<script type="text/javascript">
+	$(function() {
+		//模拟-城市
+		$('.city-selector').iselector({
+			type: 'analog',	//select
+			datajson: cityData,
+			onInitialized: function(event, config) {
+				//console.log(event)
+			},
+			onClicked: function(event, tagert, config) {
+				//console.log(tagert);
+			}
+		}).on('choose-1.iselector', function(event, selector, tagert, pluslevel, config) {
+			console.log(selector);
+		});
+
+		//更新json数据
+		//$('.city-selector').data('iselector').update([{name: "北京市", id: "440000"},{name: "广东省", id: "100000"}]);
+
+		//模拟-城市-不传json数据
+		$('.city-selector-2').iselector({
+			type: 'analog',	//select
+			datajson: 'custom',
+			onInitialized: function(event, config) {
+				//console.log(event)
+			},
+			onClicked: function(event, tagert, config) {
+				//console.log(tagert);
+			}
+		}).on('choose-1.iselector', function(event, tagert, pluslevel, config) {
+			console.log(config);
+		}).on('choose-2.iselector', function(event, tagert, pluslevel, config) {
+			console.log(config);
+		}).on('choose-3.iselector', function(event, tagert, pluslevel, config) {
+			console.log(config);
+		});
+
+		//原生select-城市
+		$('.select-selector').iselector({
+			type: 'select',	//acquie
+			datajson: cityData
+		}).on('choose-1.iselector', function(event, selector, tagert, pluslevel, config) {
+			console.log(config);
+		});
+	});
+	</script>
+</body>
+</html>
